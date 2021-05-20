@@ -49,6 +49,7 @@ func (proxy *DNSProxy) processOtherTypes(dnsServer string, q *dns.Question, requ
 	queryMsg := new(dns.Msg)
 	requestMsg.CopyTo(queryMsg)
 	queryMsg.Question = []dns.Question{*q}
+	queryMsg.RecursionDesired = false
 
 	msg, err := lookup(dnsServer, queryMsg)
 	if err != nil {
@@ -69,6 +70,7 @@ func (proxy *DNSProxy) processTypeA(dnsServer string, q *dns.Question, requestMs
 		queryMsg := new(dns.Msg)
 		requestMsg.CopyTo(queryMsg)
 		queryMsg.Question = []dns.Question{*q}
+		queryMsg.RecursionDesired = false
 
 		msg, err := lookup(dnsServer, queryMsg)
 		if err != nil {
