@@ -57,6 +57,7 @@ func main() {
 				}
 			}
 			m.SetReply(r)
+			m.RecursionAvailable = true
 			w.WriteMsg(m)
 		}
 	})
